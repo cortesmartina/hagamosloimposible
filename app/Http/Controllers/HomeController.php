@@ -10,7 +10,6 @@ use App\TagGroup;
 class HomeController extends Controller
 {
 	public function home(){
-		$areas = TagGroup::isArea()->first()->tags()->get();
 		$regionals = TagGroup::isRegional()->first()->tags()->get();
           foreach ($regionals as $key => $regional) {
                $areasRegional = TagGroup::isArea()->first()->tags()->whereHas('posts', function($query) use ($regional){
@@ -79,8 +78,6 @@ class HomeController extends Controller
                     'fb_app_id' => $fb_app_id,
                     'fb_page_name' => $fb_page_name
                ]);    
-          //CABA
-          //->areas: arte y cultura, espacios estudio, en los barrios, etc
      }
 
 }

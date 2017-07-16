@@ -1,0 +1,198 @@
+DROP DATABASE hagamosloimposible;
+create DATABASE hagamosloimposible;
+	use hagamosloimposible;
+CREATE TABLE `migrations` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `batch` int(11) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `posts` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `text1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `text2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `quote` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `fb_page` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `tag_groups` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `tags` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `taggroup_id` int(10) unsigned DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ KEY `tags_taggroup_id_foreign` (`taggroup_id`),
+ CONSTRAINT `tags_taggroup_id_foreign` FOREIGN KEY (`taggroup_id`) REFERENCES `tag_groups` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `posttags` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `post_id` int(10) unsigned NOT NULL,
+ `tag_id` int(10) unsigned NOT NULL,
+ PRIMARY KEY (`id`),
+ KEY `posttags_post_id_foreign` (`post_id`),
+ KEY `posttags_tag_id_foreign` (`tag_id`),
+ CONSTRAINT `posttags_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+ CONSTRAINT `posttags_tag_id_foreign` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+INSERT INTO tag_groups (name) VALUES 
+	('regional'),
+	('area');
+INSERT INTO posts (title) VALUES 
+
+	('Cronistas populares'),
+	('La Chispa'),
+
+	('Espacio de las mujeres'),
+	('Juegoteca antiprincesas'),
+	('Varietés y festivales antipatriarcales'),
+	('Mateadas feministas'),
+	('Talleres de formación'),
+	('Campaña Nacional Contra las Violencias Hacia Las Mujeres'),
+	('Viajamos al Encuentro Nacional de Mujeres'),
+
+	('Educación popular'),
+	('Narradorxs populares'),
+	('Muestras de fin de año'),
+	
+	('La Carbonilla'),
+	('Villa 1-11-14'),
+	('Villa 21-24'),
+	('Barrio Carlos Mugica (Villas 31 y 31 bis)'),
+	('Villa 20'),
+	('Villa Itatí'),
+	('Km 13'),
+	('Monte'),
+	('El Progreso'),
+	('El Jalón'),
+	('Santa Rosa'),
+	('La Fiat'),
+	('Tolosa'),
+	('Barrio Bongiovanni'),
+	('Villa Hidalgo'),
+	('Chingolo'),
+	('Villa Urquiza'),
+	('El Pueblito'),
+	('Barrio Mercado'),
+	('Isla Maciel'),
+	('Barrio Valentina Norte Rural'),
+	('Villa Ceferino'),
+
+	('Centro cultural Vicente Zito Lema'),
+	('Casa José Martí'),
+	('Suenan Las Calles'),
+	('Centro Cultural Raymundo Gleyzer'),
+	('Espacio Cultural El Andamio'),
+	('El Churqui'),
+	('Espacio Cultural La Siembra'),
+	('Galpón Cultural Roberto Santoro'),
+	('Centro Cultural en El Pueblito'),
+	('El Harpón');
+
+INSERT INTO tags (name,taggroup_id) VALUES 
+	('CABA',1), 
+	('Avellaneda',1), 
+	('Quilmes',1), 
+	('Lanús',1), 
+	('Fcio. Varela',1),
+	('Solano',1),
+	('La Plata',1),
+	('San Martín',1),
+	('Oeste',1),
+	('Rosario',1),
+	('Córdoba',1),
+	('Villa Mercedes',1),
+	('Neuquén',1),
+	('Fiske Menuco',1),
+	('En los barrios',2),
+	('Arte y cultura',2),
+	('Comunicación',2),
+	('Géneros',2),
+	('En los espacios de estudio',2);
+
+INSERT INTO posttags (post_id, tag_id)
+	VALUES 
+	(1, 17),
+	(2,17),
+	(3,18),
+	(4,18),
+	(5,18),
+	(6,18),
+	(7,18),
+	(8,18),
+	(9,18),
+	(10,15),
+	(11,15),
+	(12,15),
+	(13,15),
+	(13,1),
+	(14,15),
+	(14,1),
+	(15,15),
+	(15,1),
+	(16,15),
+	(16,1),
+	(17,15),
+	(17,1),
+	(18,15),
+	(18,3),
+	(19,15),
+	(19,3),
+	(20,15),
+	(20,3),	
+	(21,15),
+	(21,3),	
+	(22,15),
+	(22,3),
+	(23,15),
+	(23,5),	
+	(24,15),
+	(24,5),
+	(25,15),
+	(25,7),
+	(26,15),
+	(26,9),
+	(27,15),
+	(27,8),
+	(28,15),
+	(28,4),
+	(29,15),
+	(29,10),
+	(30,15),
+	(30,11),
+	(31,15),
+	(31,2),
+	(32,15),
+	(32,2),
+	(33,15),
+	(33,13),
+	(34,15),
+	(34,13),
+	(35,16),
+	(35,1),
+	(36,16),
+	(36,1),
+	(37,16),
+	(37,1),
+	(38,16),
+	(38,3),
+	(39,16),
+	(39,3),
+	(40,16),
+	(40,9),
+	(41,16),
+	(41,7),
+	(42,16),
+	(42,2),	
+	(43,16),
+	(43,11),	
+	(44,16),
+	(44,10);

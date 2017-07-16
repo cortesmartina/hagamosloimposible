@@ -17,7 +17,7 @@ class Tag extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('taggroup_id')->unsigned()->nullable();
-            $table->foreign('taggroup_id')->references('id')->on('taggroups');
+//            $table->foreign('taggroup_id')->references('id')->on('taggroup');
         });
     }
 

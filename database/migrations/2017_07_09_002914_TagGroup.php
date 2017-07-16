@@ -13,7 +13,7 @@ class TagGroup extends Migration
      */
     public function up()
     {
-        Schema::create('taggroups', function (Blueprint $table) {
+        Schema::create('tag_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
         });
@@ -26,6 +26,6 @@ class TagGroup extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taggroups');
+        Schema::dropIfExists('tag_groups');
     }
 }

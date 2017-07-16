@@ -1,44 +1,41 @@
-<h1>Contactanos</h1>
+<div class="col-md-6 col-md-push-1">
+  <h2>Sumate!</h2>
 
-<ul>
+  <ul>
     @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
     @endforeach
-</ul>
+  </ul>
 
-{!! Form::open(array('route' => 'contact', 'class' => 'form')) !!}
-
-<div class="form-group">
-    {!! Form::label('Nombre') !!}
-    {!! Form::text('name', null, 
+  {!! Form::open(array('route' => 'contact', 'class' => 'form')) !!}
+      <div class="form-group">
+        {!! Form::text('name', null, 
         array('required', 
               'class'=>'form-control', 
               'placeholder'=>'Nombre')) !!}
-</div>
+      </div>
 
-<div class="form-group">
-    {!! Form::label('Email') !!}
-    {!! Form::text('email', null, 
-        array('required', 
+      <div class="form-group">
+          {!! Form::text('email', null, 
+          array('required', 
               'class'=>'form-control', 
               'placeholder'=>'Email')) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('Teléfono') !!}
-    {!! Form::text('phone', null, 
-        array('class'=>'form-control', 
-              'placeholder'=>'Dejanos tu teléfono si querés que te contactemos por WhatsApp')) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('Mensaje') !!}
-    {!! Form::textarea('message', null, 
-        array('required', 
+      </div>
+      <div class="form-group">
+          {!! Form::text('phone', null, 
+          array('class'=>'form-control', 
+              'placeholder'=>'Teléfono')) !!}
+      </div>
+      <div class="form-group">
+          {!! Form::textarea('message', null, 
+          array('required', 
               'class'=>'form-control', 
               'placeholder'=>'Mensaje')) !!}
-</div>
+      </div>
 
-<div class="form-group">
-    {!! Form::submit('Enviar', 
-      array('class'=>'btn btn-primary')) !!}
+      <div class="form-group">
+          {!! Form::submit('Enviar', 
+          array('class'=>'btn btn-primary')) !!}
+      </div>
+    {!! Form::close() !!}                
 </div>
-{!! Form::close() !!}

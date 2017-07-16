@@ -7,7 +7,7 @@ use App\Tag;
 use App\Post;
 use App\TagGroup;
 
-class HomeController extends Controller
+class HomeController extends HagamosLoImposibleController
 {
 	public function home(){
 		$areas = TagGroup::isArea()->first()->tags()->get();
@@ -27,7 +27,6 @@ class HomeController extends Controller
 
      	return view('home',
      		[
-     			'areas' => $areas,
      			'regionals' => $regionals,
      			'fb_url' => $fb_url,
      			'fb_app_id' => $fb_app_id,

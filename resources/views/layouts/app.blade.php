@@ -18,7 +18,7 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- bxSlider Javascript file -->
-        {{ Html::js('js/jquery.bxslider.min.js') }}
+        {{ Html::script('js/jquery.bxslider.min.js') }}
     </head>
     <body>
 
@@ -35,7 +35,34 @@
         <!-- End of Facebook page plugin script -->
     @endif
 
-        
+    <div class="p-top">
+        <header class="p-all">
+            <div class="inline-block pull-left p-left col-md-4">
+              <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#"></a>
+                @foreach ($areas as $area)
+                    {{ link_to_route('area',  $area->name, [$area->name]) }}
+                @endforeach
+                <a href="#">¿Dónde estamos?</a>
+              </div>
+              <span style="font-size:30px;cursor:pointer" class="text-white" onclick="openNav()">&#9776;</span>
+            </div>
+
+            <div class="logo col-md-4 m-top-neg-half">
+              <a href="index.html"><img src="images/hli-logo_blanco.png" width="120px" /></a>
+            </div>
+            <ul class="inline-block text-right p-right col-md-4">
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-bullhorn text-white" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-facebook text-white" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-instagram text-white" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-twitter text-white" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-youtube-play text-white" aria-hidden="true"></i></a></li>
+            </ul>
+        </header>
+        @section('slider')
+        @show
+    </div>
 
         <div class="container">
             @yield('content')
@@ -43,7 +70,9 @@
 
         @section('fb_page_plugin')
             @if ($fb_url)
-                <div class="fb-page" data-href="{{$fb_url}}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$fb_url}}" class="fb-xfbml-parse-ignore"><a href="{{$fb_url}}">{{$fb_page_name}}</a></blockquote></div>
+            <div class="col-md-4 pull-right">
+              <div class="fb-page" data-href="{{$fb_url}}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$fb_url}}" class="fb-xfbml-parse-ignore"><a href="{{$fb_url}}">{{$fb_page_name}}</a></blockquote></div>
+            </div>
             @endif
         @show
 
@@ -52,7 +81,28 @@
         @show  
 
         @section('footer')
-            Acá va el footer
+            @include('footer')
         @show
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        {{ Html::script('js/bootstrap.min.js') }}
+
+        <!-- SIDEBAR MENU -->
+        <script>
+          function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+          }
+        </script>
+
+        <!-- BX SLIDER -->
+        <script>
+        $(document).ready(function(){
+          $('.bxslider').bxSlider();
+        });
+        </script>
     </body>
 </html>

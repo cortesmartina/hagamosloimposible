@@ -39,13 +39,11 @@ class HomeController extends Controller
                     });
           } else {
                //Check that the posts dont have a regional tag
-               $postsQuery = $postsQuery->whereHas('tags', function ($query) use ($regional) {
-                        $query->with('taggroup')->where('taggroup.name', '=', 'regional');
+               $postsQuery = $postsQuery->whereHas('tags', function ($queryTags) {
+                        $queryTags->whereHas('taggroup', function ($queryTagGroup){
+                              $queryTagGroup->where('taggroups.name', '=', 'regional');
+                        });
                     }, '<', 1);
-               $regionals = Tag::where('taggroup.name','regional')
-                    ->whereHas('posts', function ($query) use ($regional) {
-                        $query->where('name', '=', $regional);
-                    },'>',5);
           }
 
           $posts = $postsQuery->get();

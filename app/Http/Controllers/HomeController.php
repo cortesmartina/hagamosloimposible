@@ -12,6 +12,15 @@ class HomeController extends Controller
 	public function home(){
 		$areas = TagGroup::isArea()->first()->tags()->get();
 		$regionals = TagGroup::isRegional()->first()->tags()->get();
+          foreach ($regionals as $key => $regional) {
+               $areasRegional = TagGroup::isArea()->first()->tags()->whereHas('posts', function($query) use ($regional){
+                    $query->whereHas('tags', function($query) use ($regional){
+                         $query->whereName($regional->name);
+                    });
+               })->get();
+               $regionals[$key]['areas'] = $areasRegional;
+          }
+
 		$fb_url = 'https://www.facebook.com/Hagamos.Lo.Imposible.HLI/';
 		$fb_app_id = 1609360915989952;
           $fb_page_name = 'Hagamos Lo Imposible HLI';

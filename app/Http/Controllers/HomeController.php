@@ -10,8 +10,8 @@ use App\TagGroup;
 class HomeController extends Controller
 {
 	public function home(){
-		$areas = TagGroup::where('name','area')->first()->tags()->get();
-		$regionals = TagGroup::where('name','regional')->first()->tags()->get();
+		$areas = TagGroup::isArea()->first()->tags()->get();
+		$regionals = TagGroup::isRegional()->first()->tags()->get();
 		$fb_url = 'https://www.facebook.com/Hagamos.Lo.Imposible.HLI/';
 		$fb_app_id = 1609360915989952;
           $fb_page_name = 'Hagamos Lo Imposible HLI';
@@ -34,16 +34,25 @@ class HomeController extends Controller
 
 
           if ($regional){
+               $view = 'arearegional';
                $postsQuery = $postsQuery->whereHas('tags', function ($query) use ($regional) {
                         $query->where('name', '=', $regional);
                     });
           } else {
+               $view = 'area';
+
+               //All regionals that have at least one post from the area
+               $regionals = TagGroup::isRegional()->first()->tags()->whereHas('posts', function($query) use ($area){
+                    $query->whereHas('tags', function($query) use ($area){
+                         $query->whereName($area);
+                    });
+               })->get();
                //Check that the posts dont have a regional tag
-               $postsQuery = $postsQuery->whereHas('tags', function ($queryTags) {
+               $postsQuery = $postsQuery->whereDoesntHave('tags', function ($queryTags) {
                         $queryTags->whereHas('taggroup', function ($queryTagGroup){
-                              $queryTagGroup->where('taggroups.name', '=', 'regional');
+                              $queryTagGroup->isRegional();
                         });
-                    }, '<', 1);
+                    });
           }
 
           $posts = $postsQuery->get();
@@ -52,10 +61,11 @@ class HomeController extends Controller
           $fb_app_id = 1609360915989952;
           $fb_page_name = 'Hagamos Lo Imposible HLI';
           
-          return view('arearegional',
+          return view($view,
                [
                     'area' => $area,
                     'regional' => $regional,
+                    'regionals' => $regionals,
                     'posts' => $posts,
                     'fb_url' => $fb_url,
                     'fb_app_id' => $fb_app_id,

@@ -8,7 +8,7 @@ class Tag extends Model
 {
 	public $timestamps = false;
     public function posts(){
-    	return $this->belongsToMany('App\Post', 'posttags', 'tag_id', 'posts_id');
+    	return $this->belongsToMany('App\Post', 'posttags', 'tag_id', 'post_id');
     }
     public function taggroup()
     {

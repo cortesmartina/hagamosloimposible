@@ -7,7 +7,7 @@ use App\Tag;
 use App\Post;
 use App\TagGroup;
 
-class HomeController extends HagamosLoImposibleController
+class HomeController extends Controller
 {
 	public function home(){
 		$areas = TagGroup::isArea()->first()->tags()->get();

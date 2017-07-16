@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Inicio')
+@section('header-color', 'white')
 
-@section('slider')
+@section('cover')
     <div class="col-md-12 p-all p-top-none">
         <ul class="bxslider">
           <li><img src="images/home-slider/pic1.jpg" /></li>
@@ -75,13 +76,11 @@
         <ul class="col-md-6 m-top">
         	@foreach ($regionals as $regional)
         	<li class="dropdown">
-              <a data-toggle="collapse" data-target="#demo">{{ $regional->name }}</a>
-              <ul id="demo" class="collapse p-left">
-              	<li><a href="#">En los barrios</a></li>
-                <li><a href="#">Géneros</a></li>
-                <li><a href="#">En los espacios de estudio</a></li>
-                <li><a href="#">Arte y Cultura</a></li>
-                <li><a href="#">Comunicación</a></li>
+              <a data-toggle="collapse" data-target="#{{ $regional->id }}">{{ $regional->name }}</a>
+              <ul id="{{ $regional->id }}" class="collapse p-left">
+              	@foreach ($regional->areas as $area)
+              		<li>{{ link_to_route('area',  $area->name, [$area->name, $regional->name]) }}</li>
+              	@endforeach
            	  </ul>
            	</li>
 

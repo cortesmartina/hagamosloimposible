@@ -35,38 +35,37 @@
         <!-- End of Facebook page plugin script -->
     @endif
 
-    <div class="p-top">
+    <div class="p-top @yield('class')">
         <header class="p-all">
             <div class="inline-block pull-left p-left col-md-4">
               <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="#"></a>
+                <a href="#">Inicio</a>
                 @foreach ($areas as $area)
                     {{ link_to_route('area',  $area->name, [$area->name]) }}
                 @endforeach
-                <a href="#">¿Dónde estamos?</a>
               </div>
-              <span style="font-size:30px;cursor:pointer" class="text-white" onclick="openNav()">&#9776;</span>
+              <span style="font-size:30px;cursor:pointer" class="text-@yield('header-color')" onclick="openNav()">&#9776;</span>
             </div>
 
             <div class="logo col-md-4 m-top-neg-half">
-              <a href="index.html"><img src="images/hli-logo_blanco.png" width="120px" /></a>
+              <a href="index.html">@section('logo')<img src="images/hli-logo_blanco.png" width="120px" />@show</a>
             </div>
             <ul class="inline-block text-right p-right col-md-4">
-              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-bullhorn text-white" aria-hidden="true"></i></a></li>
-              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-facebook text-white" aria-hidden="true"></i></a></li>
-              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-instagram text-white" aria-hidden="true"></i></a></li>
-              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-twitter text-white" aria-hidden="true"></i></a></li>
-              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-youtube-play text-white" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-bullhorn text-@yield('header-color')" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-facebook text-@yield('header-color')" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-instagram text-@yield('header-color')" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-twitter text-@yield('header-color')" aria-hidden="true"></i></a></li>
+              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-youtube-play text-@yield('header-color')" aria-hidden="true"></i></a></li>
             </ul>
         </header>
-        @section('slider')
+        @section('cover')
         @show
     </div>
 
-        <div class="container">
-            @yield('content')
-        </div>
+    @yield('content')
+
 
         @section('fb_page_plugin')
             @if ($fb_url)

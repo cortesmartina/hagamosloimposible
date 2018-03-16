@@ -7,7 +7,7 @@
 
     <div class="form-group">
         {{ Form::label('title', 'Título') }}
-        {{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
+        {{ Form::text('title', Input::old('title'), array('class' => 'form-control required')) }}
 
 		{{ Form::label('text1', 'Texto 1') }}
 		{{ Form::text('text1', Input::old('text1'), array('class' => 'form-control')) }}

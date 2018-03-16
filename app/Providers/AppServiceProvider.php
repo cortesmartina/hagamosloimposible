@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $areas = TagGroup::isArea()->first()->tags()->get();
-        View::share('areas', $areas);
+        //$areas = TagGroup::isArea()->first()->tags()->get();
+        //View::share('areas', $areas);
     }
 
     /**

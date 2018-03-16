@@ -11,6 +11,10 @@ use App\Tag;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $posts = Post::all();
@@ -45,5 +49,9 @@ class PostController extends Controller
             ['post' => $post,
             'tags' => $tags]);
     }
-
+    public function show($id){
+        $post = Post::find($id);
+        return view('posts.show',
+            ['post' => $post]);
+    }
 }

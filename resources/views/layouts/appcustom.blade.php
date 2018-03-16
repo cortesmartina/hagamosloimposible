@@ -22,7 +22,7 @@
     </head>
     <body>
 
-    @if (isset($fb_app_id))
+    @if ($fb_app_id)
         <!-- Facebook page plugin script -->
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
@@ -42,6 +42,9 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="#"></a>
                 <a href="#">Inicio</a>
+                @foreach ($areas as $area)
+                    {{ link_to_route('area',  $area->name, [$area->name]) }}
+                @endforeach
               </div>
               <span style="font-size:30px;cursor:pointer" class="text-@yield('header-color')" onclick="openNav()">&#9776;</span>
             </div>
@@ -65,7 +68,7 @@
 
 
         @section('fb_page_plugin')
-            @if (isset($fb_url))
+            @if ($fb_url)
             <div class="col-md-4 pull-right">
               <div class="fb-page" data-href="{{$fb_url}}" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$fb_url}}" class="fb-xfbml-parse-ignore"><a href="{{$fb_url}}">{{$fb_page_name}}</a></blockquote></div>
             </div>

@@ -29,6 +29,12 @@
 	<div class="col-md-push-6 col-md-1 h-2 background-red m-top-25 m-bottom"></div>
 
 	@foreach ($posts as $post)
+		@if (($loop->index % 2) == 1)
+			@include('area.post-left', ['post' => $post])
+		@else
+			@include('area.post-right', ['post' => $post])	
+		@endif
+
 		<div class="post-1 col-md-12">
 		    <div class="col-md-5 p-none">
 		      	<div class="col-md-1 h-2 background-red m-top-25"></div>

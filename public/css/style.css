@@ -574,18 +574,15 @@ p{
     padding-top: 5px;
 }
 
-
-
-
-
-
-
-
-
 /* Media Queries */
 
 
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
+}
+
+
+.tag {
+  background-color: red;
 }

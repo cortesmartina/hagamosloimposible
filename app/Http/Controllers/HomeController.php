@@ -9,7 +9,8 @@ use App\TagGroup;
 
 class HomeController extends Controller
 {
-    public function home(){
+     public function home(){
+        $areas = TagGroup::isArea()->first()->tags()->get();
         $regionals = TagGroup::isRegional()->first()->tags()->get();
           foreach ($regionals as $key => $regional) {
                $areasRegional = TagGroup::isArea()->first()->tags()->whereHas('posts', function($query) use ($regional){
@@ -24,6 +25,7 @@ class HomeController extends Controller
           $fb_page_name = 'Hagamos Lo Imposible HLI';
         return view('home',
             [
+                'areas'=> $areas,               
                 'regionals' => $regionals,
                 'fb_url' => $fb_url,
                 'fb_app_id' => $fb_app_id,

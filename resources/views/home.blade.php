@@ -96,16 +96,6 @@
         <img src="images/home-slider/pic4.jpg" width="100%" />
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-        
+      
 @endsection
 

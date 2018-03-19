@@ -42,6 +42,9 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="#"></a>
                 <a href="#">Inicio</a>
+                 @foreach ($areas as $area)
+                    {{ link_to_route('area',  $area->name, [$area->name]) }}
+                @endforeach 
               </div>
               <span style="font-size:30px;cursor:pointer" class="text-@yield('header-color')" onclick="openNav()">&#9776;</span>
             </div>

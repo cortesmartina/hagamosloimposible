@@ -21,6 +21,9 @@
 		{{ Form::text('fb_page', null, array('class' => 'form-control')) }}
 
 		{{ Form::label('image', 'Imagen de portada') }}
+		<p>
+		    <img src="{{ asset('storage') }}/{{$post->image}}" class="postimage"></img>
+	    </p>
     	{{ Form::file('image', array('class' => 'image')) }}
 
 		Tags:

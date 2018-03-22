@@ -7,6 +7,10 @@ use App\Http\Requests\ContactFormRequest;
 
 class ContactController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('maintenance');
+    }
 	public function send(ContactFormRequest $request){
 	    \Mail::send('emails.contact',
 	        array(

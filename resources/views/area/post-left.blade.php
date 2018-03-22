@@ -8,6 +8,6 @@
     </div>
 
     <div class="col-md-6 pull-right">
-       {{ $post->img }}
+       <img src="{{ asset('storage') }}/{{$post->image}}" class="postimage"></img>
     </div>
 	</div>

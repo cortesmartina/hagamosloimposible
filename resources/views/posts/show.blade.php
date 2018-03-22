@@ -27,7 +27,7 @@
 	{{ Form::label('image', 'Imagen de portada') }}
 	</p>
 	<p>
-    <img src="{{ asset('storage') }}/{{$post->image}}"></img>
+    <img src="{{ asset('storage') }}/{{$post->image}}" class="postimage"></img>
     </p>
 
     @foreach($post->tags as $tag)

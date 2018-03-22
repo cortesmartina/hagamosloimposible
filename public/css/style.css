@@ -586,3 +586,8 @@ p{
 .tag {
   background-color: red;
 }
+
+.postimage {
+  max-width:500px; 
+  height:auto;
+}

@@ -1,6 +1,7 @@
 <?php
 Route::get('/admin', 'PostController@index');
 Route::resource('posts', 'PostController');
+
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/home', 'HomeController@home')->name('home');
 

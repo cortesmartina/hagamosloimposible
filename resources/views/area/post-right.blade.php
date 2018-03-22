@@ -1,6 +1,6 @@
 	<div class="post-2 col-md-12">
     <div class="col-md-7 m-top-25">
-       {{ $post->img }}
+              <img src="{{ asset('storage') }}/{{$post->image}}" class="postimage"></img>
     </div>
     <div class="col-md-5">
       <div class="col-md-1 h-2 background-blue m-top-25"></div>

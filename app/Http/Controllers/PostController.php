@@ -75,10 +75,12 @@ class PostController extends Controller
         $post->fb_page = Input::get('fb_page');
 
         $file = $request->file("image");
-        $name = $post->id . "." . $file->extension();
-        $folder = "postimages";
-        $path = $file->storePubliclyAs('public/'.$folder, $name); 
-        $post->image = $folder.'/'.$name;
+        if ($file){
+            $name = $post->id . "." . $file->extension();
+            $folder = "postimages";
+            $path = $file->storePubliclyAs('public/'.$folder, $name); 
+            $post->image = $folder.'/'.$name;
+        }
 
         $post->save();
     }

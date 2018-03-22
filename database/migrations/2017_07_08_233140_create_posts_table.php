@@ -16,10 +16,11 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('text1')->nullable();
-            $table->string('text2')->nullable();
+            $table->longText('text1')->nullable();
+            $table->longText('text2')->nullable();
             $table->string('quote')->nullable();
             $table->string('fb_page')->nullable();
+            $table->string('image')->nullable();
         });
     }
 

@@ -9,9 +9,19 @@ use App\TagGroup;
 
 class HomeController extends Controller
 {
-     public function home(){
-        $areas = TagGroup::isArea()->first()->tags()->get();
-        $regionals = TagGroup::isRegional()->first()->tags()->get();
+    public function __construct()
+    {
+        $this->middleware('maintenance');
+    }
+    private function getAreas(){
+      return TagGroup::isArea()->first()->tags()->get();
+    }
+    private function getRegionals(){
+      return TagGroup::isRegional()->first()->tags()->get();
+    }
+    public function home(){
+        $areas = $this->getAreas();
+        $regionals = $this->getRegionals();
           foreach ($regionals as $key => $regional) {
                $areasRegional = TagGroup::isArea()->first()->tags()->whereHas('posts', function($query) use ($regional){
                     $query->whereHas('tags', function($query) use ($regional){
@@ -22,7 +32,7 @@ class HomeController extends Controller
           }
         $fb_url = 'https://www.facebook.com/Hagamos.Lo.Imposible.HLI/';
         $fb_app_id = 1609360915989952;
-          $fb_page_name = 'Hagamos Lo Imposible HLI';
+        $fb_page_name = 'Hagamos Lo Imposible HLI';
         return view('home',
             [
                 'areas'=> $areas,               
@@ -33,7 +43,7 @@ class HomeController extends Controller
             ]);
     }
      public function area($area, $regional = null){
-          
+          $areas = $this->getAreas();
           $regionals = null;
           $postsQuery = Post::whereHas('tags', function ($query) use ($area) {
                    $query->where('name', '=', $area);
@@ -65,6 +75,7 @@ class HomeController extends Controller
           
           return view($view,
                [
+                    'areas' => $areas,
                     'area' => $area,
                     'regional' => $regional,
                     'regionals' => $regionals,

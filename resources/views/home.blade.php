@@ -14,51 +14,53 @@
 @endsection
 
 @section('content')
+    @php ($area = 'Comunicación')
     <div class="col-md-12 areas section">
       <div class="polygon-1"></div>
-      
       <div class="col-md-4">
         <div class="col-md-2 h-2 background-purple"></div>
         <h2 class="text-purple m-bottom">¿Qué hacemos?</h2>
         <div class="col-md-11 col-md-push-1 m-top area-option">
-          <a href="#">
+          <a href="{{ route('area',  ['area' => $area]) }}">
             <span class="overlay"></span>
             <img src="images/home-slider/pic4.jpg" width="100%" />
-            <h3>Comunicación</h3>
+            <h3>{{ $area }}</h3>
           </a>
         </div>
       </div>
-
+      @php ($area = 'En los barrios')
       <div class="col-md-4">
         <div class="col-md-push-2 col-md-10 m-bottom area-option">
-          <a href="#">
+          <a href="{{ route('area',  ['area' => $area]) }}">
             <span class="overlay"></span>
             <img src="images/home-slider/pic4.jpg" width="100%" />
-            <h3>En los barrios</h3>
+            <h3>{{ $area }}</h3>
           </a>
         </div>
+      @php ($area = 'Géneros')
         <div class="col-md-8 area-option">
-          <a href="#">
+          <a href="{{ route('area',  ['area' => $area]) }}">
             <span class="overlay"></span>
             <img src="images/home-slider/pic4.jpg" width="100%" />
-            <h3>Géneros</h3>
+            <h3>{{ $area }}</h3>
           </a>
         </div>
       </div>
-
+      @php ($area = 'En los espacios de estudio')
       <div class="col-md-4">
         <div class="col-md-12 m-bottom area-option">
-          <a href="#">
+          <a href="{{ route('area',  ['area' => $area]) }}">
             <span class="overlay"></span>
             <img src="images/home-slider/pic4.jpg" width="100%" />
-            <h3>En los espacios de estudio</h3>
+            <h3>{{ $area }}</h3>
           </a>
         </div>
+      @php ($area = 'Arte y cultura')
         <div class="col-md-8 area-option">
-          <a href="#">
+          <a href="{{ route('area',  ['area' => $area]) }}">
             <span class="overlay"></span>
             <img src="images/home-slider/pic4.jpg" width="100%" />
-            <h3>Arte y Cultura</h3>
+            <h3>{{ $area }}</h3>
           </a>
         </div>
       </div>

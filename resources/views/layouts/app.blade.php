@@ -53,7 +53,6 @@
               <a href="index.html">@section('logo')<img src="images/hli-logo_blanco.png" width="120px" />@show</a>
             </div>
             <ul class="inline-block text-right p-right col-md-4">
-              <li class="inline-block p-quarter"><a href="#"><i class="fa fa-bullhorn text-@yield('header-color')" aria-hidden="true"></i></a></li>
               <li class="inline-block p-quarter"><a href="#"><i class="fa fa-facebook text-@yield('header-color')" aria-hidden="true"></i></a></li>
               <li class="inline-block p-quarter"><a href="#"><i class="fa fa-instagram text-@yield('header-color')" aria-hidden="true"></i></a></li>
               <li class="inline-block p-quarter"><a href="#"><i class="fa fa-twitter text-@yield('header-color')" aria-hidden="true"></i></a></li>
@@ -100,7 +99,12 @@
         <!-- BX SLIDER -->
         <script>
         $(document).ready(function(){
-          $('.bxslider').bxSlider();
+          $('.bxslider').bxSlider({
+            auto: true,
+            stopAutoOnClick: true,
+            speed: 300,
+            touchEnabled: true
+          });
         });
         </script>
     </body>

@@ -574,15 +574,6 @@ p{
     padding-top: 5px;
 }
 
-/* Media Queries */
-
-
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-}
-
-
 .tag {
   background-color: red;
 }
@@ -591,3 +582,27 @@ p{
   max-width:500px; 
   height:auto;
 }
+
+.center-image {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height:80vh;
+  margin-top: 5%;
+}
+
+.center-image img {
+  width: 80%;
+  height: auto;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+}
+
+

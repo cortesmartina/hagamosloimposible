@@ -3,7 +3,6 @@
       <a href="index.html"><img src="images/hli-logo_blanco.png" width="100px" /></a>
 
       <ul class="inline-block">
-            <li class="inline-block p-quarter"><a href="#"><i class="fa fa-bullhorn text-white" aria-hidden="true"></i></a></li>
             <li class="inline-block p-quarter"><a href="#"><i class="fa fa-facebook text-white" aria-hidden="true"></i></a></li>
             <li class="inline-block p-quarter"><a href="#"><i class="fa fa-instagram text-white" aria-hidden="true"></i></a></li>
             <li class="inline-block p-quarter"><a href="#"><i class="fa fa-twitter text-white" aria-hidden="true"></i></a></li>

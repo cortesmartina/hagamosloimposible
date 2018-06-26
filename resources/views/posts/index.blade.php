@@ -18,8 +18,11 @@
                 <a class="btn btn-small btn-success" href="{{ URL::to('posts/' . $value->id) }}">Ver</a>
 
                 <a class="btn btn-small btn-info" href="{{ URL::to('posts/' . $value->id . '/edit') }}">Editar</a>
-                <form action="DELETE"></form>
-                <a class="btn btn-small btn-danger" href="{{ URL::to('posts/' . $value->id ) }}">Eliminar</a>
+                <form action="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+
+                    <input type="submit" class="btn btn-small btn-danger" href="{{ URL::to('posts/' . $value->id ) }}">Eliminar</a>
+                </form>
 
             </td>
         </tr>
